@@ -5,10 +5,14 @@ import { Typography, Box } from "@material-ui/core";
 const PlayerInfo = () => {
   const [userData, setUserData] = useState({});
 
-  useEffect(async () => {
-    const result = await axios(process.env.envVar.REACT_APP_PLAYER_INFO);
+  useEffect(() => {
+    async function getPlayerInfo() {
+      const result = await axios(process.env.envVar.REACT_APP_PLAYER_INFO);
 
-    setUserData(result.data.response.players[0]);
+      setUserData(result.data.response.players[0]);
+    }
+
+    getPlayerInfo();
   }, []);
 
   return (

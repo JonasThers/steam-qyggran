@@ -3,6 +3,8 @@ import "./styles/styles.scss"
 import { Container } from '@material-ui/core';
 import PlayerInfo from './components/PlayerInfo';
 import RecentlyPlayed from './components/RecentlyPlayed';
+import OwnedGames from './components/OwnedGames';
+import TopGames from './components/TopGames';
 
 const App = () => {
 
@@ -10,6 +12,8 @@ const App = () => {
         <Container maxWidth="sm">
             <PlayerInfo />
             <RecentlyPlayed />
+            <TopGames />
+            <OwnedGames />
         </Container>
     )
 }
