@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Game from "./Game";
-import { Typography, Box } from "@material-ui/core";
+import { Typography, Box, Grid } from "@material-ui/core";
 
 const OwnedGames = () => {
   const [ownedGamesData, setOwnedGamesData] = useState([]);
@@ -31,17 +31,19 @@ const OwnedGames = () => {
       <Typography variant="h4" gutterBottom component="div">
         Owned games ({ownedGamesData.length})
       </Typography>
-      {ownedGamesData.map((ownedGame, index) => {
-        return (
-          <Game
-            key={index}
-            id={ownedGame.appid}
-            playTime={ownedGame.playtime_forever}
-            img={ownedGame.img_logo_url}
-            name={ownedGame.name}
-          />
-        );
-      })}
+      <Grid container spacing={5}>
+        {ownedGamesData.map((ownedGame, index) => {
+          return (
+            <Game
+              key={index}
+              id={ownedGame.appid}
+              playTime={ownedGame.playtime_forever}
+              img={ownedGame.img_logo_url}
+              name={ownedGame.name}
+            />
+          );
+        })}
+      </Grid>
     </Box>
   );
 };

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Game from "./Game";
-import { Typography, Box } from "@material-ui/core";
+import { Typography, Box, Grid } from "@material-ui/core";
 
 const TopGames = () => {
   const [topGamesData, setTopGamesData] = useState([]);
@@ -25,17 +25,19 @@ const TopGames = () => {
       <Typography variant="h4" gutterBottom component="div">
         Most played games
       </Typography>
-      {topGamesData.map((topGame, index) => {
-        return (
-          <Game
-            key={index}
-            id={topGame.appid}
-            playTime={topGame.playtime_forever}
-            img={topGame.img_logo_url}
-            name={topGame.name}
-          />
-        );
-      })}
+      <Grid container spacing={5}>
+        {topGamesData.map((topGame, index) => {
+          return (
+            <Game
+              key={index}
+              id={topGame.appid}
+              playTime={topGame.playtime_forever}
+              img={topGame.img_logo_url}
+              name={topGame.name}
+            />
+          );
+        })}
+      </Grid>
     </Box>
   );
 };

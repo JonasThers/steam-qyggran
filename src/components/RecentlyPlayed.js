@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Game from "./Game";
-import { Typography, Box } from "@material-ui/core";
+import { Typography, Box, Grid } from "@material-ui/core";
 
 const RecentlyPlayed = () => {
   const [recentGamesData, setRecentGamesData] = useState([]);
@@ -22,7 +22,7 @@ const RecentlyPlayed = () => {
         Recently played
       </Typography>
       {recentGamesData ? (
-        <Box>
+        <Grid container spacing={5}>
           {recentGamesData.map((recentGame, index) => {
             return (
               <Game
@@ -34,7 +34,7 @@ const RecentlyPlayed = () => {
               />
             );
           })}
-        </Box>
+        </Grid>
       ) : (
         <Typography variant="body1" gutterBottom>
           Nothing played in the last two weeks
