@@ -16,6 +16,12 @@ const PlayerInfo = () => {
       <Typography variant="h2" gutterBottom component="div">
         {userData.personaname}
       </Typography>
+      <Typography variant="subtitle1" gutterBottom component="div">
+        Real name: {userData.realname}
+      </Typography>
+      <Typography variant="subtitle1" gutterBottom component="div">
+        Location: {userData.loccountrycode}
+      </Typography>
     </Box>
   );
 };
