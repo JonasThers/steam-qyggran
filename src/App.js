@@ -5,7 +5,7 @@ import { Container } from '@material-ui/core';
 const App = () => {
     return (
         <Container maxWidth="sm">
-            Hello world
+            Test
         </Container>
     )
 }
