@@ -16,7 +16,7 @@ const PlayerInfo = () => {
   }, []);
 
   return (
-    <Box>
+    <Box mb={5}>
       <Typography variant="h2" gutterBottom component="div">
         {userData.personaname}
       </Typography>

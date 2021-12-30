@@ -21,7 +21,7 @@ const TopGames = () => {
   }, []);
 
   return (
-    <Box>
+    <Box mb={5}>
       <Typography variant="h4" gutterBottom component="div">
         Most played games
       </Typography>
@@ -30,6 +30,7 @@ const TopGames = () => {
           <Game
             key={index}
             id={topGame.appid}
+            playTime={topGame.playtime_forever}
             img={topGame.img_logo_url}
             name={topGame.name}
           />

@@ -17,17 +17,18 @@ const RecentlyPlayed = () => {
   }, []);
 
   return (
-    <Box>
+    <Box mb={5}>
       <Typography variant="h4" gutterBottom component="div">
         Recently played
       </Typography>
-      {recentGamesData.length ? (
+      {recentGamesData ? (
         <Box>
           {recentGamesData.map((recentGame, index) => {
             return (
               <Game
                 key={index}
                 id={recentGame.appid}
+                playTime={recentGame.playtime_forever}
                 img={recentGame.img_logo_url}
                 name={recentGame.name}
               />
@@ -38,7 +39,7 @@ const RecentlyPlayed = () => {
         <Typography variant="body1" gutterBottom>
           Nothing played in the last two weeks
         </Typography>
-      )}
+      )} 
     </Box>
   );
 };
