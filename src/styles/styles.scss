@@ -1,0 +1,6 @@
+@import "./maps/maps";
+
+body {
+    background: map-get($colors, 'black');
+    color: map-get($colors, 'white');
+}
