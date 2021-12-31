@@ -1,10 +1,31 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Game from "./Game";
-import { Typography, Box, Grid } from "@material-ui/core";
+import { Typography, Box, Grid, makeStyles } from "@material-ui/core";
+import AnchorLink from "react-anchor-link-smooth-scroll";
+
+const useStyles = makeStyles((theme) => ({
+  button: {
+    background: "#fff",
+    padding: 10,
+    borderRadius: 3,
+    marginLeft: 10,
+  },
+  link: {
+    textDecoration: "none",
+    color: "#000",
+  },
+  pagination: {
+    display: "flex",
+    justifyContent: "flex-end",
+  },
+}));
 
 const OwnedGames = () => {
+  const classes = useStyles();
+
   const [ownedGamesData, setOwnedGamesData] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
 
   const sortArray = (x, y) => {
     if (x.name < y.name) {
@@ -26,13 +47,30 @@ const OwnedGames = () => {
     getOwnedGames();
   }, []);
 
+  const handlePagination = (event) => {
+    setCurrentPage(Number(event.target.id));
+  };
+
+  const entriesPerPage = 20;
+  const indexOfLastEntry = currentPage * entriesPerPage;
+  const indexOfFirstEntry = indexOfLastEntry - entriesPerPage;
+  const currentEntries = ownedGamesData.slice(
+    indexOfFirstEntry,
+    indexOfLastEntry
+  );
+
+  const pageNumbers = [];
+  for (let i = 1; i <= Math.ceil(ownedGamesData.length / entriesPerPage); i++) {
+    pageNumbers.push(i);
+  }
+
   return (
-    <Box mb={5}>
+    <Box mb={5} id="top">
       <Typography variant="h4" gutterBottom component="div">
         Owned games ({ownedGamesData.length})
       </Typography>
       <Grid container spacing={5}>
-        {ownedGamesData.map((ownedGame, index) => {
+        {currentEntries.map((ownedGame, index) => {
           return (
             <Game
               key={index}
@@ -44,6 +82,21 @@ const OwnedGames = () => {
           );
         })}
       </Grid>
+      <Box className={classes.pagination}>
+        {pageNumbers.map((number, index) => {
+          return (
+            <AnchorLink href="#top" key={index} className={classes.link}>
+              <Box
+                id={number}
+                onClick={handlePagination}
+                className={classes.button}
+              >
+                {number}
+              </Box>
+            </AnchorLink>
+          );
+        })}
+      </Box>
     </Box>
   );
 };
