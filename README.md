@@ -1,13 +1,4 @@
-<h2>A template for React projects. Feel free to fork it and modify it</h2>
+<p>Trying out the Steam API</p>
 
-<ul>
-<h3>Templates uses:</h3>
-    <li>Functional components</li>
-    <li>Sass</li>
-    <li>Material UI</li>
-    <li>Webpack</li>
-    <li>Babel</li>
-</ul>
-
-<p>To start it: npm run start</p>
+<p>Based on my <a href="https://github.com/JonasThers/React-Template">React Template</a></p>
 
